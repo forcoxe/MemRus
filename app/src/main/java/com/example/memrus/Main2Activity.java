@@ -21,5 +21,8 @@ public class Main2Activity extends AppCompatActivity {
         lista =  findViewById(R.id.listDecks);
         adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,values);
         lista.setAdapter(adaptador);
+
+
+
     }
 }

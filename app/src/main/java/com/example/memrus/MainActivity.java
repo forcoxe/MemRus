@@ -46,10 +46,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         button = (Button) findViewById(R.id.bt1);
-        button.setOnClickListener(new View.OnClickListener() {
+
+       /* button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivity2();
+            }
+        });
+
+        */
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivitySlider();
             }
         });
     }
@@ -66,4 +76,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
+    public void openActivitySlider(){
+        Intent intent = new Intent(this, SlideActivity.class);
+        startActivity(intent);
+    }
+
+
 }
