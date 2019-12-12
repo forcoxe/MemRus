@@ -32,9 +32,6 @@ public class SliderAdapter extends PagerAdapter {
 
 
 
-    public String[] wordArray = {
-            "привет", "спасибо", "поко"
-    };
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view== (ConstraintLayout)object;
