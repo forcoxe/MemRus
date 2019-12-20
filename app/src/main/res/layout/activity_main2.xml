@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="61dp">
 
         <ListView
-            android:id="@+id/listDecks"
+            android:id="@+id/listContainers"
             android:layout_width="409dp"
             android:layout_height="729dp"
             android:entries="@android:array/emailAddressTypes"/>

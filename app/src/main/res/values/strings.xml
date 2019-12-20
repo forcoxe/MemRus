@@ -15,4 +15,5 @@
     <string name="menu_send">Send</string>
 
     <string name="standard_decks">Standard Decks</string>
+    <string name="custom_decks">Custom Decks</string>
 </resources>

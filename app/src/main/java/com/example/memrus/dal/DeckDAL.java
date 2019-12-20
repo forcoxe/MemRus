@@ -35,10 +35,10 @@ public class DeckDAL {
         return this.tryInsert();
     }
 
-    public boolean insertar(String name, int category, Container container)
+    public boolean insertar(String name,Container container)
     {
         this.deck.setName(name);
-        this.deck.setCategory(category);
+
         this.deck.setContainer(container);
 
         return this.tryInsert();
@@ -55,10 +55,9 @@ public class DeckDAL {
             do {
                 int id = consulta.getInt(0);
                 String nombre = consulta.getString(1);
-                int category = consulta.getInt(2);
                 Container container = new Container(consulta.getInt(1));
 
-                Deck deck = new Deck(id,nombre,category,container);
+                Deck deck = new Deck(id,nombre,container);
                 lista.add(deck);
                 /*
                 // forma B
@@ -110,7 +109,7 @@ public class DeckDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("name", deck.getName());
-        c.put("category", deck.getCategory());
+
 
         try {
             int filasAfectadas;
@@ -162,7 +161,7 @@ public class DeckDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("name", this.deck.getName());
-        c.put("category", this.deck.getCategory());
+
 
         try {
             db.insert("deck", null, c);

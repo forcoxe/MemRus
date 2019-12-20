@@ -22,9 +22,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table container(id_container INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);");
-        db.execSQL("create table decks (id_deck INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, category INTEGER, id_container INTEGER, FOREIGN KEY (id_container) REFERENCES Container(id_container));");
-        db.execSQL("create table ru_words(id_ru_word INTEGER PRIMARY KEY AUTOINCREMENT, ru_word TEXT, ru_word_l TEXT, ru_word_a TEXT);");
+        db.execSQL("create table container(id_container INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, category INTEGER);");
+        db.execSQL("create table decks (id_deck INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, id_container INTEGER, FOREIGN KEY (id_container) REFERENCES Container(id_container));");
+        db.execSQL("create table ru_words(id_ru_word INTEGER PRIMARY KEY AUTOINCREMENT, ru_word TEXT, ru_word_l TEXT, ru_word_a TEXT, learn_level INTEGER);");
         db.execSQL("create table en_words(id_en_word INTEGER PRIMARY KEY AUTOINCREMENT, en_word TEXT);");
         db.execSQL("create table es_words(id_es_word INTEGER PRIMARY KEY AUTOINCREMENT, es_word TEXT);");
         db.execSQL("create table examples(id_example INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT);");
@@ -32,7 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table ru_en(id_en_word INTEGER, id_ru_word INTEGER,  FOREIGN KEY (id_en_word) REFERENCES En_words(id_en_word), FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
         db.execSQL("create table ru_es(id_es_word INTEGER, id_ru_word INTEGER, FOREIGN KEY (id_es_word) REFERENCES Es_words(id_es_word), FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
         db.execSQL("create table ex_words(id_example INTEGER, id_ru_word INTEGER, FOREIGN KEY (id_example) REFERENCES Examples(id_example), FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
-        db.execSQL("create table ru_flex(id_flex INTEGER PRIMARY KEY AUTOINCREMENT, id_ru_word INTEGER, flex_desc_en TEXT, flex_desc_es TEXT, FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
+
+       db.execSQL("create table ru_flex(id_flex INTEGER PRIMARY KEY AUTOINCREMENT, id_ru_word INTEGER, flex_desc_en TEXT, flex_desc_es TEXT, FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
+
     }
 
     @Override

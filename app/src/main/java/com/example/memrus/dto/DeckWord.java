@@ -1,6 +1,7 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class DeckWord {
+public class DeckWord implements Serializable {
     private Deck deck;
     private RuWord word;
 

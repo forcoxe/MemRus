@@ -31,9 +31,10 @@ public class ContainerDAL {
         return this.tryInsert();
     }
 
-    public boolean insertar(String name)
+    public boolean insertar(String name, int category)
     {
         this.container.setName(name);
+        this.container.setCategory(category);
 
 
         return this.tryInsert();
@@ -50,9 +51,9 @@ public class ContainerDAL {
             do {
                 int id = consulta.getInt(0);
                 String nombre = consulta.getString(1);
+                int category = consulta.getInt(2);
 
-
-                Container container = new Container(id,nombre);
+                Container container = new Container(id,nombre,category);
                 lista.add(container);
                 /*
                 // forma B
@@ -77,6 +78,7 @@ public class ContainerDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("name", container.getName());
+        c.put("category", container.getCategory());
         try {
             int filasAfectadas;
             filasAfectadas = db.update(
@@ -100,6 +102,7 @@ public class ContainerDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("container", container.getName());
+        c.put("container", container.getCategory());
 
         try {
             int filasAfectadas;
@@ -151,6 +154,7 @@ public class ContainerDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("nombre", this.container.getName());
+        c.put("nombre", this.container.getCategory());
 
 
         try {

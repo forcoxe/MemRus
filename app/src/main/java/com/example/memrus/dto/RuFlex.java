@@ -1,6 +1,7 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class RuFlex {
+public class RuFlex implements Serializable{
     private int id;
     private RuWord word;
     private String meaningRu;

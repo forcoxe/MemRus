@@ -1,6 +1,7 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class Example {
+public class Example implements Serializable{
     private int id;
     private String content;
 

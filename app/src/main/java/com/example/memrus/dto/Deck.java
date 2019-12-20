@@ -1,19 +1,19 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class Deck {
+public class Deck implements Serializable{
 
     private int id;
     private String name;
-    private int category;
     private Container container;
 
     public Deck() {
     }
 
-    public Deck(int id, String name, int category, Container container) {
+    public Deck(int id, String name, Container container) {
         this.id = id;
         this.name = name;
-        this.category = category;
+
         this.container = container;
     }
 
@@ -31,14 +31,6 @@ public class Deck {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public Container getContainer() {

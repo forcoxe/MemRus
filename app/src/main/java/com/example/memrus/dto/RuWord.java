@@ -1,11 +1,13 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class RuWord {
+public class RuWord implements Serializable{
 
     private int id;
     private String word;
     private String latin;
     private String accent;
+    private int learnLevel;
 
     public RuWord() {
     }
@@ -15,6 +17,14 @@ public class RuWord {
         this.word = word;
     }
 
+    public RuWord(int id, String word, String latin, String accent, int learnLevel) {
+        this.id = id;
+        this.word = word;
+        this.latin = latin;
+        this.accent = accent;
+        this.learnLevel = learnLevel;
+    }
+
     public RuWord(int id, String word, String latin, String accent) {
         this.id = id;
         this.word = word;
@@ -22,6 +32,14 @@ public class RuWord {
         this.accent = accent;
     }
 
+
+    public int getLearnLevel() {
+        return learnLevel;
+    }
+
+    public void setLearnLevel(int learnLevel) {
+        this.learnLevel = learnLevel;
+    }
 
     public String getLatin() {
         return latin;

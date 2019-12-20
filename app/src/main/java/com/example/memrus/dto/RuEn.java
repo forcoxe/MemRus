@@ -1,6 +1,7 @@
 package com.example.memrus.dto;
+import java.io.Serializable;
 
-public class RuEn {
+public class RuEn  implements Serializable{
     private RuWord ruWord;
     private EnWord enWord;
 
