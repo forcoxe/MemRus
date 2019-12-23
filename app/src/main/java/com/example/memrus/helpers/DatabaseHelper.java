@@ -22,8 +22,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table container(id_container INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, category INTEGER);");
-        db.execSQL("create table decks (id_deck INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, id_container INTEGER, FOREIGN KEY (id_container) REFERENCES Container(id_container));");
+        db.execSQL("create table containers(id_container INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, category INTEGER);");
+        db.execSQL("create table decks (id_deck INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, id_container INTEGER, FOREIGN KEY (id_container) REFERENCES Containers(id_container));");
         db.execSQL("create table ru_words(id_ru_word INTEGER PRIMARY KEY AUTOINCREMENT, ru_word TEXT, ru_word_l TEXT, ru_word_a TEXT, learn_level INTEGER);");
         db.execSQL("create table en_words(id_en_word INTEGER PRIMARY KEY AUTOINCREMENT, en_word TEXT);");
         db.execSQL("create table es_words(id_es_word INTEGER PRIMARY KEY AUTOINCREMENT, es_word TEXT);");
@@ -35,7 +35,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
        db.execSQL("create table ru_flex(id_flex INTEGER PRIMARY KEY AUTOINCREMENT, id_ru_word INTEGER, flex_desc_en TEXT, flex_desc_es TEXT, FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
 
+        //POBLAR TABLAS
+        db.execSQL("insert into containers values(NULL,'verbs1',0);");
+        db.execSQL("insert into containers values(NULL,'nouns1',0);");
+        db.execSQL("insert into containers values(NULL,'adjectives1',0);");
+
+        db.execSQL("insert into decks values(NULL,'verbs1 - 1','1');");
+        db.execSQL("insert into decks values(NULL,'verbs1 - 2','1');");
+        db.execSQL("insert into decks values(NULL,'verbs1 - 3','1');");
+        db.execSQL("insert into decks values(NULL,'nouns1 - 1','2');");
+
+        db.execSQL("insert into ru_words values(NULL,'удалять','udalyat','удаля́ть',0);");
+        db.execSQL("insert into ru_words values(NULL,'умереть','umeret','умере́ть',0);");
+        db.execSQL("insert into ru_words values(NULL,'верить','verit','ве́рить',0);");
+
+        db.execSQL("insert into deck_rus_words values(1,1);");
+        db.execSQL("insert into deck_rus_words values(1,2);");
+        db.execSQL("insert into deck_rus_words values(1,3);");
+
+
     }
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

@@ -45,7 +45,7 @@ public class ContainerDAL {
         ArrayList<Container> lista = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor consulta = db.rawQuery("SELECT * FROM container", null);
+        Cursor consulta = db.rawQuery("SELECT * FROM containers", null);
 
         if(consulta.moveToFirst()) {
             do {
@@ -82,7 +82,7 @@ public class ContainerDAL {
         try {
             int filasAfectadas;
             filasAfectadas = db.update(
-                    "container",
+                    "containers",
                     c,
                     "id = ?",
                     new String[] { String.valueOf(id) }
@@ -101,13 +101,13 @@ public class ContainerDAL {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
-        c.put("container", container.getName());
-        c.put("container", container.getCategory());
+        c.put("containers", container.getName());
+        c.put("containers", container.getCategory());
 
         try {
             int filasAfectadas;
             filasAfectadas = db.update(
-                    "container",
+                    "containers",
                     c,
                     "id = ?",
                     new String[] { String.valueOf(container.getId()) }
@@ -133,7 +133,7 @@ public class ContainerDAL {
                 });*/
 
         try {
-            filasAfectadas = db.delete("container","id = ?",
+            filasAfectadas = db.delete("containers","id = ?",
                     new String[] { String.valueOf(id) });
         } catch (Exception e) {
             return false;
@@ -158,7 +158,7 @@ public class ContainerDAL {
 
 
         try {
-            db.insert("container", null, c);
+            db.insert("containers", null, c);
         } catch (Exception e) {
             return false;
         }

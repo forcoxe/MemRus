@@ -12,6 +12,10 @@ public class RuWord implements Serializable{
     public RuWord() {
     }
 
+    public RuWord(int id) {
+        this.id = id;
+    }
+
     public RuWord(int id, String word) {
         this.id = id;
         this.word = word;
@@ -71,5 +75,17 @@ public class RuWord implements Serializable{
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+
+    @Override
+    public String toString() {
+        return "RuWord{" +
+                "id=" + id +
+                ", word='" + word + '\'' +
+                ", latin='" + latin + '\'' +
+                ", accent='" + accent + '\'' +
+                ", learnLevel=" + learnLevel +
+                '}';
     }
 }

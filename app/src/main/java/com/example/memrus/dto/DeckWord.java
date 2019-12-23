@@ -31,4 +31,8 @@ public class DeckWord implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "Deck: "+ deck.getId() + "|| Word: "+ word.getId();
+    }
 }

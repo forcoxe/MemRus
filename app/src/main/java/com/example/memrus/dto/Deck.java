@@ -17,6 +17,10 @@ public class Deck implements Serializable{
         this.container = container;
     }
 
+    public Deck(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -41,5 +45,8 @@ public class Deck implements Serializable{
         this.container = container;
     }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }
