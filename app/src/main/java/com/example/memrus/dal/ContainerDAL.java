@@ -166,7 +166,8 @@ public class ContainerDAL {
         return true;
     }
 
-    public Container getSerie()
+
+    public Container getContainer()
     {
         return this.container;
     }

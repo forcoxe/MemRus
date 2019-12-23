@@ -43,6 +43,37 @@ public class DeckDAL {
 
         return this.tryInsert();
     }
+    public ArrayList<Deck> seleccionar(Container container)
+    {
+        ArrayList<Deck> lista = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor consulta = db.rawQuery("SELECT * FROM decks WHERE id_container = ?", new String[]{ String.valueOf(container.getId())});
+
+
+        if(consulta.moveToFirst()) {
+            do {
+                int id = consulta.getInt(0);
+                String nombre = consulta.getString(1);
+                Container con = new Container(consulta.getInt(1));
+
+                Deck deck = new Deck(id,nombre,con);
+                lista.add(deck);
+                /*
+                // forma B
+                Serie serie = new Serie();
+                serie.setId(id);
+                serie.setNombre(nombre);*/
+
+            } while(consulta.moveToNext());
+
+        }
+
+        // EJ: Where con parámetros
+        // Cursor consulta = db.rawQuery("SELECT * FROM serie WHERE categoria = ?", new String[]{ String.valueOf("Sci-fi") });
+
+        return lista;
+    }
 
     public ArrayList<Deck> seleccionar()
     {
