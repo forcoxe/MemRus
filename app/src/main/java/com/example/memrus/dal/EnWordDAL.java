@@ -31,6 +31,45 @@ public class EnWordDAL {
         this.enWord = enWord;
     }
 
+    public EnWord seleccionar(String name)
+    {
+        ArrayList<EnWord> lista = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        name.toLowerCase();
+
+        Cursor consulta = db.rawQuery("SELECT * FROM en_words WHERE en_word = ?", new String[]{name});
+
+
+        if(consulta.moveToFirst()) {
+            do {
+                int id = consulta.getInt(0);
+                String word = consulta.getString(1);
+
+
+
+
+                EnWord enWord = new EnWord(id,word);
+                lista.add(enWord);
+                /*
+                // forma B
+                Serie serie = new Serie();
+                serie.setId(id);
+                serie.setNombre(nombre);*/
+
+            } while(consulta.moveToNext());
+
+        }
+
+        // EJ: Where con parámetros
+        // Cursor consulta = db.rawQuery("SELECT * FROM serie WHERE categoria = ?", new String[]{ String.valueOf("Sci-fi") });
+        if(!lista.isEmpty())
+            return lista.get(0);
+        else {
+            lista.add(new EnWord(0));
+            return lista.get(0);
+        }
+    }
+
     public EnWord seleccionar(RuEn ruEn)
     {
         ArrayList<EnWord> lista = new ArrayList<>();

@@ -24,9 +24,10 @@ public class ListaDecks extends AppCompatActivity {
     private ContainerDAL containerDAL;
     private DeckDAL deckDAL;
     private ListView listaDeckView;
+    private int codPosicion = 0;
     private ArrayAdapter<Deck> adapter;
     private ArrayList<Deck> listDecks;
-    private int codPosicion = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

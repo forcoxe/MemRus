@@ -53,6 +53,6 @@ public class Container implements Serializable{
     public String toString() {
         return
 
-                name +"||"+id;
+                name;
     }
 }

@@ -80,12 +80,8 @@ public class RuWord implements Serializable{
 
     @Override
     public String toString() {
-        return "RuWord{" +
-                "id=" + id +
-                ", word='" + word + '\'' +
-                ", latin='" + latin + '\'' +
-                ", accent='" + accent + '\'' +
-                ", learnLevel=" + learnLevel +
-                '}';
+        return
+
+                 word ;
     }
 }

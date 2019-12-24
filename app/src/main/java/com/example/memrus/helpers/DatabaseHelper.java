@@ -44,19 +44,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("insert into decks values(NULL,'verbs1 - 2','1');");
         db.execSQL("insert into decks values(NULL,'verbs1 - 3','1');");
         db.execSQL("insert into decks values(NULL,'nouns1 - 1','2');");
+        db.execSQL("insert into decks values(NULL,'adjectives1 - 1','3');");
+
 
         db.execSQL("insert into ru_words values(NULL,'удалять','udalyat','удаля́ть',0);");
         db.execSQL("insert into ru_words values(NULL,'умереть','umeret','умере́ть',0);");
         db.execSQL("insert into ru_words values(NULL,'верить','verit','ве́рить',0);");
+        db.execSQL("insert into ru_words values(NULL,'слово','slovo','сло́во',0);");
+        db.execSQL("insert into ru_words values(NULL,'дом','dom','до́м',0);");
+        db.execSQL("insert into ru_words values(NULL,'прекрасный','prekrasnyy','прекра́сный',0);");
+        db.execSQL("insert into ru_words values(NULL,'хорошенький','khoroshen-kiy','хоро́шенький',0);");
+        db.execSQL("insert into ru_words values(NULL,'бежать','bezhat','бежа́́ть',0);");
+        db.execSQL("insert into ru_words values(NULL,'класть','klast','кла́сть',0);");
+
+        // DECK VERBS
 
         db.execSQL("insert into deck_rus_words values(1,1);");
         db.execSQL("insert into deck_rus_words values(1,2);");
         db.execSQL("insert into deck_rus_words values(1,3);");
-
+        db.execSQL("insert into deck_rus_words values(2,8);");
+        db.execSQL("insert into deck_rus_words values(3,9);");
+        //DECK NOUNS
+        db.execSQL("insert into deck_rus_words values(4,4);");
+        db.execSQL("insert into deck_rus_words values(4,5);");
+        //DECK Adjectvives
+        db.execSQL("insert into deck_rus_words values(5,6);");
 
         db.execSQL("insert into en_words values(NULL,'die');");
         db.execSQL("insert into en_words values(NULL,'delete');");
         db.execSQL("insert into en_words values(NULL,'believe');");
+        db.execSQL("insert into en_words values(NULL,'word');");
+        db.execSQL("insert into en_words values(NULL,'house');");
+        db.execSQL("insert into en_words values(NULL,'beautiful');");
+        db.execSQL("insert into en_words values(NULL,'run');");
+        db.execSQL("insert into en_words values(NULL,'put');");
+
+        db.execSQL("insert into ru_en values(2,1);");
+        db.execSQL("insert into ru_en values(1,2);");
+        db.execSQL("insert into ru_en values(3,3);");
+        db.execSQL("insert into ru_en values(4,4);");
+        db.execSQL("insert into ru_en values(5,5);");
+        db.execSQL("insert into ru_en values(6,6);");
+        db.execSQL("insert into ru_en values(6,7);");
+        db.execSQL("insert into ru_en values(7,8);");
+        db.execSQL("insert into ru_en values(8,9);");
 
     }
 

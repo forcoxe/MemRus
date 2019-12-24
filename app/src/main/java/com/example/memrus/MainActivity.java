@@ -10,6 +10,7 @@ import com.example.memrus.dto.Container;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +32,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<Container> adapter;
     private ArrayList<Container> listaSeries;
     private int codPosicion = 0;
+
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,41 +70,25 @@ public class MainActivity extends AppCompatActivity {
         //Creación del container
 
         //BOORRRAT LA BASE DE DATOS
-       // getApplicationContext().deleteDatabase("memrus.db");
+       getApplicationContext().deleteDatabase("memrus.db");
 
 
         this.containerDAL = new ContainerDAL(getApplicationContext(),new Container());
         this.listaSeries = new ContainerDAL(getBaseContext()).seleccionar();
 
-        // i.- Enlazar la interfaz gráfica al componente
-        this.listSeries = (ListView) findViewById(R.id.listSeries);
 
 
-        // ii.- Crear ArrayAdapter y asociarlo al cRud
-        this.adapter = new ArrayAdapter<Container>(
-                getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                this.listaSeries
-        ){
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view =super.getView(position, convertView, parent);
-
-                TextView textView=(TextView) view.findViewById(android.R.id.text1);
-
-                /*YOUR CHOICE OF COLOR*/
-                textView.setTextColor(Color.BLACK);
-
-                return view;
-            }
-        };
+        this.searchView = (SearchView) findViewById(R.id.av_location);
 
 
-        // iii.- Asociar el ArrayAdapter al componente ListView
-        this.listSeries.setAdapter(adapter);
 
-
+       this.searchView.setOnClickListener(new View.OnClickListener(){
+           @Override
+           public void onClick(View v) {
+               Log.w("NO","FUNCA");
+               openActivitySearch();
+           }
+       });
 
 
         /*
@@ -189,6 +177,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
+    public void openActivitySearch(){
+
+        Intent intent = new Intent(this, SearchWord.class);
+
+        String w = this.searchView.getQuery().toString();
+        intent.putExtra("search", w);
+
+        startActivityForResult(intent, 100);
+    }
 
     private void abrirEditarSerieActivity() {
         Intent intento = new Intent(MainActivity.this, Main2Activity.class);
@@ -201,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actualizarLista() {
+
         adapter.clear();
         adapter.addAll(containerDAL.seleccionar());
         adapter.notifyDataSetChanged();
