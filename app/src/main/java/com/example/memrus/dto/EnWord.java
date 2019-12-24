@@ -9,6 +9,10 @@ public class EnWord implements Serializable {
     public EnWord() {
     }
 
+    public EnWord(int id) {
+        this.id = id;
+    }
+
     public EnWord(int id, String word) {
         this.id = id;
         this.word = word;

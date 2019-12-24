@@ -75,6 +75,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private void abrirListaDecksActivity() {
         Intent intento = new Intent(Main2Activity.this, ListaDecks.class);
+
         Container c = (Container) listContainers.get(codPosicion);
 
         intento.putExtra("container", c);

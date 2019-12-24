@@ -3,8 +3,12 @@ package com.example.memrus;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.memrus.dal.DeckDAL;
 import com.example.memrus.dal.DeckWordDAL;
@@ -28,6 +32,11 @@ public class SlideActivity extends AppCompatActivity {
     private RuWordDAL ruWordDAL;
     private ArrayList<RuWord> ruWords = new ArrayList<>();
 
+    private TextView textViewWord;
+    private Button buttonMeaning;
+
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +44,8 @@ public class SlideActivity extends AppCompatActivity {
         Log.w("gola","gola");
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
+        textViewWord = (TextView) findViewById(R.id.textWord);
+        buttonMeaning = (Button) findViewById(R.id.btMeaning) ;
 
         deck = (Deck) getIntent().getSerializableExtra("deck");
 
@@ -64,5 +75,26 @@ public class SlideActivity extends AppCompatActivity {
         sliderAapter = new SliderAdapter(this, ruWords);
 
         mSlideViewPager.setAdapter(sliderAapter);
+        mSlideViewPager.getAdapter().getCount();
+
+
+        buttonMeaning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intento = new Intent(SlideActivity.this, WordDetail.class);
+                int i = mSlideViewPager.getCurrentItem();
+                RuWord ruWord = ruWords.get(mSlideViewPager.getCurrentItem());
+                intento.putExtra("position", i);
+                intento.putExtra("ruword", ruWord);
+                startActivityForResult(intento, 100);
+            }
+        });
+
+
+
+
+
+
     }
 }

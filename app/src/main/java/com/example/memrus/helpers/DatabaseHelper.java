@@ -54,6 +54,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("insert into deck_rus_words values(1,3);");
 
 
+        db.execSQL("insert into en_words values(NULL,'die');");
+        db.execSQL("insert into en_words values(NULL,'delete');");
+        db.execSQL("insert into en_words values(NULL,'believe');");
+
     }
 
 
