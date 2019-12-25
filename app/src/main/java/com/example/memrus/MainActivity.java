@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Button button;
+    private Button buttonCustom;
     private ContainerDAL containerDAL;
     private ListView listSeries;
     private ArrayAdapter<Container> adapter;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         //Creación del container
 
         //BOORRRAT LA BASE DE DATOS
-       getApplicationContext().deleteDatabase("memrus.db");
+      // getApplicationContext().deleteDatabase("memrus.db");
 
 
         this.containerDAL = new ContainerDAL(getApplicationContext(),new Container());
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
        this.searchView.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.w("NO","FUNCA");
+               Log.w("NO,","FUNCA");
                openActivitySearch();
            }
        });
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         button = (Button) findViewById(R.id.bt1);
+        buttonCustom = (Button) findViewById(R.id.bt);
 
        /* button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +159,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openActivitySlider();
+            }
+        });
+        buttonCustom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivitySlider2();
             }
         });
     }
@@ -175,6 +183,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openActivitySlider(){
         Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
+    }
+    public void openActivitySlider2(){
+        Intent intent = new Intent(this, CustomContainers.class);
         startActivity(intent);
     }
     public void openActivitySearch(){

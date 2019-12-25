@@ -192,10 +192,11 @@ public class DeckDAL {
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
         c.put("name", this.deck.getName());
+        c.put("id_container", this.deck.getContainer().getId());
 
 
         try {
-            db.insert("deck", null, c);
+            db.insert("decks", null, c);
         } catch (Exception e) {
             return false;
         }

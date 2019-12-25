@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchWord"></activity>
+        <activity android:name=".ListaDecksCustom"></activity>
+        <activity android:name=".AgregarContainer" />
+        <activity android:name=".CustomContainers" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SearchWord" />
         <activity android:name=".WordDetail" />
         <activity android:name=".IngresarPalabra" />
         <activity android:name=".ListaDecks" />

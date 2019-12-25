@@ -16,4 +16,5 @@
 
     <string name="standard_decks">Standard Decks</string>
     <string name="custom_decks">Custom Decks</string>
+    <string name="title_activity_main3">Main3Activity</string>
 </resources>

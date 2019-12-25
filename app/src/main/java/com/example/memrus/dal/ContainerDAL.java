@@ -45,7 +45,38 @@ public class ContainerDAL {
         ArrayList<Container> lista = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor consulta = db.rawQuery("SELECT * FROM containers", null);
+        Cursor consulta = db.rawQuery("SELECT * FROM containers WHERE category = 0", null);
+
+        if(consulta.moveToFirst()) {
+            do {
+                int id = consulta.getInt(0);
+                String nombre = consulta.getString(1);
+                int category = consulta.getInt(2);
+
+                Container container = new Container(id,nombre,category);
+                lista.add(container);
+                /*
+                // forma B
+                Serie serie = new Serie();
+                serie.setId(id);
+                serie.setNombre(nombre);*/
+
+            } while(consulta.moveToNext());
+
+        }
+
+        // EJ: Where con parámetros
+        // Cursor consulta = db.rawQuery("SELECT * FROM serie WHERE categoria = ?", new String[]{ String.valueOf("Sci-fi") });
+
+        return lista;
+    }
+
+    public ArrayList<Container> seleccionar2()
+    {
+        ArrayList<Container> lista = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor consulta = db.rawQuery("SELECT * FROM containers WHERE category = 1", null);
 
         if(consulta.moveToFirst()) {
             do {
@@ -153,8 +184,8 @@ public class ContainerDAL {
 */
 
         ContentValues c = new ContentValues(); // Objeto tipo clave-valor
-        c.put("nombre", this.container.getName());
-        c.put("nombre", this.container.getCategory());
+        c.put("name", this.container.getName());
+        c.put("category", this.container.getCategory());
 
 
         try {
