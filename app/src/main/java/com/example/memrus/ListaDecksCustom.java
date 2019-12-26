@@ -106,7 +106,7 @@ public class ListaDecksCustom extends AppCompatActivity {
     }
 
     private void deleteDeck(){
-        Deck deckParaEliminar = listDecks.get(listDecks.size());
+        Deck deckParaEliminar = listDecks.get(listDecks.size()-1);
         deckDAL.eliminar(deckParaEliminar.getId());
         actualizarLista();
     }
