@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table ru_words(id_ru_word INTEGER PRIMARY KEY AUTOINCREMENT, ru_word TEXT, ru_word_l TEXT, ru_word_a TEXT, learn_level INTEGER);");
         db.execSQL("create table en_words(id_en_word INTEGER PRIMARY KEY AUTOINCREMENT, en_word TEXT);");
         db.execSQL("create table es_words(id_es_word INTEGER PRIMARY KEY AUTOINCREMENT, es_word TEXT);");
-        db.execSQL("create table examples(id_example INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT);");
+        db.execSQL("create table examples(id_example INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT, content_en TEXT, type INTEGER);");
         db.execSQL("create table deck_rus_words(id_deck INTEGER, id_word INTEGER , FOREIGN KEY (id_deck) REFERENCES Decks(id_deck), FOREIGN KEY (id_word) REFERENCES Ru_words(id_ru_word));");
         db.execSQL("create table ru_en(id_en_word INTEGER, id_ru_word INTEGER,  FOREIGN KEY (id_en_word) REFERENCES En_words(id_en_word), FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");
         db.execSQL("create table ru_es(id_es_word INTEGER, id_ru_word INTEGER, FOREIGN KEY (id_es_word) REFERENCES Es_words(id_es_word), FOREIGN KEY (id_ru_word) REFERENCES Ru_words(id_ru_word));");

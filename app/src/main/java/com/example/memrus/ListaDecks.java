@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.example.memrus.dal.ContainerDAL;
 import com.example.memrus.dal.DeckDAL;
+import com.example.memrus.dal.DeckWordDAL;
 import com.example.memrus.dto.Container;
 import com.example.memrus.dto.Deck;
+import com.example.memrus.dto.DeckWord;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,17 @@ public class ListaDecks extends AppCompatActivity {
         this.listaDeckView = (ListView) findViewById(R.id.listDeckus);
 
 
+        //Esto es para poner la cantidad de palabras dentro de un determinado deck
+        DeckWordDAL deckWordDAL = new DeckWordDAL(getApplicationContext(),new DeckWord());
+        ArrayList<DeckWord> deckWords = new ArrayList<>();
+
+        for (int i = 0; i < listDecks.size() ; i++) {
+
+            deckWords = deckWordDAL.seleccionar(listDecks.get(i));
+            listDecks.get(i).setCantidad(deckWords.size());
+        }
+
+
         // ii.- Crear ArrayAdapter y asociarlo al cRud
         this.adapter = new ArrayAdapter<Deck>(
                 getApplicationContext(),
@@ -58,6 +71,7 @@ public class ListaDecks extends AppCompatActivity {
 
                 /*YOUR CHOICE OF COLOR*/
                 textView.setTextColor(Color.BLACK);
+
 
                 return view;
             }

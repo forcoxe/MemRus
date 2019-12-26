@@ -1,4 +1,6 @@
 package com.example.memrus.dto;
+import com.example.memrus.dal.DeckWordDAL;
+
 import java.io.Serializable;
 
 public class Deck implements Serializable{
@@ -6,6 +8,13 @@ public class Deck implements Serializable{
     private int id;
     private String name;
     private Container container;
+
+    private int cantidad = 0;
+
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public Deck() {
     }
@@ -47,6 +56,8 @@ public class Deck implements Serializable{
 
     @Override
     public String toString() {
-        return name;
+
+        return name + "             -           " + cantidad+" words";
+
     }
 }

@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.example.memrus.dal.ContainerDAL;
 import com.example.memrus.dal.DeckDAL;
+import com.example.memrus.dal.DeckWordDAL;
 import com.example.memrus.dto.Container;
 import com.example.memrus.dto.Deck;
+import com.example.memrus.dto.DeckWord;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,18 @@ public class ListaDecksCustom extends AppCompatActivity {
 
         this.buttonAdd = (Button) findViewById(R.id.buttonAgregarDeck);
         this.buttonDelete = (Button) findViewById(R.id.buttonEliminarDeck);
+
+        //Esto es para poner la cantidad de palabras dentro de un determinado deck
+        DeckWordDAL deckWordDAL = new DeckWordDAL(getApplicationContext(),new DeckWord());
+        ArrayList<DeckWord> deckWords = new ArrayList<>();
+
+        for (int i = 0; i < listDecks.size() ; i++) {
+
+            deckWords = deckWordDAL.seleccionar(listDecks.get(i));
+            listDecks.get(i).setCantidad(deckWords.size());
+        }
+
+
 
         // i.- Enlazar la interfaz gráfica al componente
         this.listaDeckView = (ListView) findViewById(R.id.listDeckusCustom);
@@ -106,14 +120,30 @@ public class ListaDecksCustom extends AppCompatActivity {
     }
 
     private void deleteDeck(){
+        if(!listDecks.isEmpty()){
         Deck deckParaEliminar = listDecks.get(listDecks.size()-1);
         deckDAL.eliminar(deckParaEliminar.getId());
         actualizarLista();
+        }
     }
 
     private void actualizarLista() {
         adapter.clear();
-        adapter.addAll(deckDAL.seleccionar(container));
+
+        ArrayList<Deck> nah = deckDAL.seleccionar(container);
+
+        //Esto es para poner la cantidad de palabras dentro de un determinado deck
+        DeckWordDAL deckWordDAL = new DeckWordDAL(getApplicationContext(),new DeckWord());
+        ArrayList<DeckWord> deckWords = new ArrayList<>();
+
+        for (int i = 0; i < nah.size() ; i++) {
+
+            deckWords = deckWordDAL.seleccionar(nah.get(i));
+            nah.get(i).setCantidad(deckWords.size());
+        }
+
+
+        adapter.addAll(nah);
         adapter.notifyDataSetChanged();
     }
 
