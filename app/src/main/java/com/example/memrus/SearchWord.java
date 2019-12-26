@@ -2,6 +2,7 @@ package com.example.memrus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -118,7 +119,7 @@ public class SearchWord extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long l) {
                 codPosicion = posicion;
-               // abrirWordsActivity();
+                abrirListaAddDecksActivity();
             }
         });
 
@@ -127,5 +128,16 @@ public class SearchWord extends AppCompatActivity {
         this.listaSearchView.setAdapter(adapter);
         }
 
+    }
+
+    private void abrirListaAddDecksActivity() {
+        Intent intento = new Intent(SearchWord.this, AddWordToDeck.class);
+
+        RuWord r = (RuWord) listRuWords.get(codPosicion);
+
+        intento.putExtra("ruwordadd", r);
+
+
+        startActivityForResult(intento, 100);
     }
 }

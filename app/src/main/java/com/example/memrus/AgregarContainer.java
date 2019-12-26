@@ -55,7 +55,7 @@ public class AgregarContainer extends AppCompatActivity {
 
 
             Log.w("Datos",containerDAL.getContainer().getName()+"  -  "+idea);
-            deckDAL.insertar(containerDAL.getContainer().getName(),new Container(idea));
+            deckDAL.insertar(containerDAL.getContainer().getName()+" - 1",new Container(idea));
 
             toast.show();
 

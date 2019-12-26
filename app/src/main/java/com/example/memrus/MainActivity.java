@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         //Creación del container
 
         //BOORRRAT LA BASE DE DATOS
-      // getApplicationContext().deleteDatabase("memrus.db");
+        getApplicationContext().deleteDatabase("memrus.db");
 
 
         this.containerDAL = new ContainerDAL(getApplicationContext(),new Container());

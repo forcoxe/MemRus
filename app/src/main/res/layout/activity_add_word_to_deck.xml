@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddWordToDeck">
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="100dp"
+
+        android:textSize="36sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="258dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+        <ListView
+            android:id="@+id/listDeckusAdd"
+            android:layout_width="370dp"
+            android:layout_height="729dp"
+            android:entries="@android:array/emailAddressTypes"
+            tools:layout_editor_absoluteX="-29dp"
+            tools:layout_editor_absoluteY="295dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

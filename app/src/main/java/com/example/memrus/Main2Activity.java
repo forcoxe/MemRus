@@ -68,12 +68,14 @@ public class Main2Activity extends AppCompatActivity {
         });
 
 
+
         // iii.- Asociar el ArrayAdapter al componente ListView
         this.listaContainer.setAdapter(adapter);
 
     }
 
     private void abrirListaDecksActivity() {
+
         Intent intento = new Intent(Main2Activity.this, ListaDecks.class);
 
         Container c = (Container) listContainers.get(codPosicion);

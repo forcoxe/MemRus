@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +28,9 @@ public class ListaDecksCustom extends AppCompatActivity {
     private int codPosicion = 0;
     private ArrayAdapter<Deck> adapter;
     private ArrayList<Deck> listDecks;
+    private Container container;
+    private Button buttonAdd;
+    private Button buttonDelete;
 
 
     @Override
@@ -34,9 +38,14 @@ public class ListaDecksCustom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_decks_custom);
 
-        this.containerDAL = new ContainerDAL(getApplicationContext(), (Container) getIntent().getSerializableExtra("containerCustom") );
+        this.container = (Container) getIntent().getSerializableExtra("containerCustom");
+
+        this.containerDAL = new ContainerDAL(getApplicationContext(), container );
         this.deckDAL = new DeckDAL(getApplicationContext(), new Deck());
         this.listDecks = deckDAL.seleccionar(this.containerDAL.getContainer());
+
+        this.buttonAdd = (Button) findViewById(R.id.buttonAgregarDeck);
+        this.buttonDelete = (Button) findViewById(R.id.buttonEliminarDeck);
 
         // i.- Enlazar la interfaz gráfica al componente
         this.listaDeckView = (ListView) findViewById(R.id.listDeckusCustom);
@@ -73,13 +82,47 @@ public class ListaDecksCustom extends AppCompatActivity {
 
         // iii.- Asociar el ArrayAdapter al componente ListView
         this.listaDeckView.setAdapter(adapter);
+
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addDeck();
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteDeck();
+            }
+        });
     }
+
+    private void addDeck(){
+        String num = String.valueOf(listDecks.size()+1);
+        deckDAL.insertar(container.getName()+" - "+num,container);
+        actualizarLista();
+    }
+
+    private void deleteDeck(){
+        Deck deckParaEliminar = listDecks.get(listDecks.size());
+        deckDAL.eliminar(deckParaEliminar.getId());
+        actualizarLista();
+    }
+
+    private void actualizarLista() {
+        adapter.clear();
+        adapter.addAll(deckDAL.seleccionar(container));
+        adapter.notifyDataSetChanged();
+    }
+
 
     private void abrirWordsActivity() {
         Intent intento = new Intent(ListaDecksCustom.this, SlideActivity.class);
         Deck d = (Deck) listDecks.get(codPosicion);
 
-        intento.putExtra("deckCustom", d);
+        intento.putExtra("deck", d);
 
 
         startActivityForResult(intento, 100);

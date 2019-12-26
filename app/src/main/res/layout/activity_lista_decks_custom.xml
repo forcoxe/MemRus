@@ -7,6 +7,7 @@
     tools:context=".ListaDecksCustom">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,18 +18,33 @@
             android:id="@+id/listDeckusCustom"
             android:layout_width="409dp"
             android:layout_height="729dp"
-            android:entries="@android:array/emailAddressTypes"/>
+            android:entries="@android:array/emailAddressTypes">
+
+        </ListView>
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonAgregarDeck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar"
+        android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/buttonEliminarDeck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="68dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAgregarDeck"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

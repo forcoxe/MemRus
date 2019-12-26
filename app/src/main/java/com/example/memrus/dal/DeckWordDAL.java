@@ -31,6 +31,36 @@ public class DeckWordDAL {
         this.deckWord = deckWord;
     }
 
+    public boolean insertar(Deck deck,RuWord ruWord)
+    {
+        this.deckWord.setDeck(deck);
+        this.deckWord.setWord(ruWord);
+
+        return this.tryInsert();
+    }
+
+    private boolean tryInsert() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+/*
+        String[] argumentos = new String[]{"Breaking Bad","Suspenso","36"};
+        db.execSQL("INSERT INTO serie(nombre,categoria,capitulos) VALUES(?,?,?);", argumentos);
+*/
+
+        ContentValues c = new ContentValues(); // Objeto tipo clave-valor
+        c.put("id_deck", this.deckWord.getDeck().getId());
+        c.put("id_word",this.deckWord.getWord().getId());
+
+
+        try {
+            db.insert("deck_rus_words", null, c);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
     public ArrayList<DeckWord> seleccionar(Deck deck)
     {
         ArrayList<DeckWord> lista = new ArrayList<>();

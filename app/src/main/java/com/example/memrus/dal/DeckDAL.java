@@ -171,7 +171,7 @@ public class DeckDAL {
                 });*/
 
         try {
-            filasAfectadas = db.delete("deck","id = ?",
+            filasAfectadas = db.delete("decks","id_deck = ?",
                     new String[] { String.valueOf(id) });
         } catch (Exception e) {
             return false;
